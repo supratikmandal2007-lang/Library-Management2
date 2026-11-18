@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library Desk</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Library Desk</h1>
+  <nav>
+    <button data-t="home" class="on">Overview</button>
+    <button data-t="books">Books</button>
+    <button data-t="members">Members</button>
+    <button data-t="loans">Issue / Return</button>
+  </nav>
+</header>
+<main>
+  <section id="home">
+    <div id="stats"></div>
+    <h2>Overdue now</h2>
+    <div class="wrap"><table><tbody id="overdueRows"></tbody></table></div>
+    <h2>Backup</h2>
+    <p class="note">Data is saved in this browser only. Export a backup before clearing browser data.</p>
+    <button id="exp">Export JSON</button>
+    <label class="btn">Import JSON<input type="file" id="imp" accept=".json" hidden></label>
+    <button id="sample" class="ghost">Load sample data</button>
+  </section>
+
+  <section id="books" hidden>
+    <form id="bookForm">
+      <input name="title" placeholder="Title" required>
+      <input name="author" placeholder="Author" required>
+      <input name="isbn" placeholder="ISBN (optional)">
+      <input name="copies" type="number" min="1" value="1" required>
+      <button>Add book</button>
+    </form>
+    <input id="q" type="search" placeholder="Search title, author, ISBN">
+    <div class="wrap"><table><thead><tr><th>Book</th><th>Free</th><th></th></tr></thead><tbody id="bookRows"></tbody></table></div>
+  </section>
+
+  <section id="members" hidden>
+    <form id="memForm">
+      <input name="name" placeholder="Full name" required>
+      <input name="contact" placeholder="Phone or email" required>
+      <button>Add member</button>
+    </form>
+    <div class="wrap"><table><thead><tr><th>Member</th><th>Books out</th><th></th></tr></thead><tbody id="memRows"></tbody></table></div>
+  </section>
+
+  <section id="loans" hidden>
+    <form id="loanForm">
+      <select name="member" id="selMem" required></select>
+      <select name="book" id="selBook" required></select>
+      <input name="days" type="number" min="1" value="14" title="Loan days">
+      <button>Issue book</button>
+    </form>
+    <h2>On loan</h2>
+    <div class="wrap"><table><tbody id="loanRows"></tbody></table></div>
+    <h2>History</h2>
+    <div class="wrap"><table><tbody id="histRows"></tbody></table></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
